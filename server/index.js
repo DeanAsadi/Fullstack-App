@@ -16,6 +16,7 @@ massive(process.env.CONNECTION_STRING)
 
 //End points-------------------------
 app.get("/api/products", controller.getProducts);
+app.post("/api/products", controller.addProducts);
 
 const port = 3001;
 app.listen(port, () => console.log(` Listening on port ${port} `));
