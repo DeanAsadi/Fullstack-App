@@ -2,7 +2,7 @@ module.exports = {
   getProducts: (req, res, next) => {
     const db = req.app.get("db");
     db.get_products()
-      .then(product => res.status(200).send(product))
+      .then(() => res.status(200).send())
       .catch(err => console.log("Get product ERROR", err));
   },
   addProducts: (req, res, next) => {
@@ -14,5 +14,12 @@ module.exports = {
         console.log("Adding successful...")
       )
       .catch(err => console.log("adding error", err));
+  },
+  deleteProducts: (req, res, next) => {
+    const db = req.app.get("db");
+    const { id } = req.params;
+    db.delete_products(id)
+      .then(() => res.status(200).send())
+      .catch(err => console.log("Delete ERROR ", err));
   }
 };
