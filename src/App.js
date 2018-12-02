@@ -15,6 +15,10 @@ class App extends Component {
           <Link to="/new">
             <button>New Prudect</button>
           </Link>
+          <br />
+          <br />
+          <br />
+          <Link to="/products">All products</Link>
           {routes}
         </div>
       </Provider>

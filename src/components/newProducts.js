@@ -22,6 +22,7 @@ class NewProduct extends Component {
       this.props.history.replace("/");
     }
   };
+
   render() {
     const { productName, productImage, productPrice } = this.state;
     return (

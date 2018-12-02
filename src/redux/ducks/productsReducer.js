@@ -40,6 +40,7 @@ export default function productsReducer(state = initialState, action) {
       return { ...state, isLoading: true };
     case "GET_PRODUCT_FULFILLED":
       return { ...state, products: action.payload.data };
+
     case "GET_PRODUCT_REJECTED":
       return { ...state, isLoading: true, error: action.payload };
 
@@ -53,7 +54,11 @@ export default function productsReducer(state = initialState, action) {
     case "DELETE_PRODUCT_PENDING":
       return { ...state, isLoading: true };
     case "DELETE_PRODUCT_FULFILLED":
-      return { ...state, isLoading: false, products: action.payload.data };
+      return {
+        ...state,
+        isLoading: false,
+        products: [...state.products, action.payload.data]
+      };
     case "DELETE_PRODUCT_REJECTED":
       return { ...state, isLoading: true, error: action.payload };
     default:
