@@ -1,3 +1,5 @@
+import axios from "axios";
+
 //Initial state--------
 const initialState = {
   products: [],
@@ -31,27 +33,28 @@ export function deleteProduct() {
   };
 }
 
+// Reducer function-----------------------------------------------------
 export default function productsReducer(state = initialState, action) {
   switch (action.type) {
     case "GET_PRODUCT_PENDING":
       return { ...state, isLoading: true };
-    case GET_PRODUCT_FULFILLED:
+    case "GET_PRODUCT_FULFILLED":
       return { ...state, products: action.payload.data };
-    case GET_PRODUCT_REJECTED:
+    case "GET_PRODUCT_REJECTED":
       return { ...state, isLoading: true, error: action.payload };
 
-    case ADD_PRODUCT_PENDING:
+    case "ADD_PRODUCT_PENDING":
       return { ...state, isLoading: true };
-    case ADD_PRODUCT_FULFILLED:
+    case "ADD_PRODUCT_FULFILLED":
       return { ...state, isLoading: false, products: action.payload.data };
-    case ADD_PRODUCT_REJECTED:
+    case "ADD_PRODUCT_REJECTED":
       return { ...state, isLoading: true, error: action.payload };
 
-    case DELETE_PRODUCT_PENDING:
+    case "DELETE_PRODUCT_PENDING":
       return { ...state, isLoading: true };
-    case DELETE_PRODUCT_FULFILLED:
+    case "DELETE_PRODUCT_FULFILLED":
       return { ...state, isLoading: false, products: action.payload.data };
-    case DELETE_PRODUCT_REJECTED:
+    case "DELETE_PRODUCT_REJECTED":
       return { ...state, isLoading: true, error: action.payload };
     default:
       return state;

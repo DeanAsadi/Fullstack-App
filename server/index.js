@@ -12,7 +12,7 @@ massive(process.env.CONNECTION_STRING)
   .then(db => {
     app.set("db", db, console.log("DB connected"));
   })
-  .catch(err => console.log(err));
+  .catch(err => console.log("DB NOT CONNCTED...", err));
 
 //End points-------------------------
 app.get("/api/products", controller.getProducts);
